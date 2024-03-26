@@ -1,0 +1,77 @@
+[
+  {
+    "id": 1,
+    "name": "Bitcoin",
+    "abbreviation": "BTC"
+  },
+  {
+    "id": 2,
+    "name": "Ethereum",
+    "abbreviation": "ETH"
+  },
+  {
+    "id": 3,
+    "name": "BNB",
+    "abbreviation": "BNB"
+  },
+  {
+    "id": 4,
+    "name": "Cardano",
+    "abbreviation": "ADA"
+  },
+  {
+    "id": 5,
+    "name": "Solana",
+    "abbreviation": "SOL"
+  },
+  {
+    "id": 6,
+    "name": "XRP",
+    "abbreviation": "XRP"
+  },
+  {
+    "id": 7,
+    "name": "Polkadot-new",
+    "abbreviation": "DOT"
+  },
+  {
+    "id": 8,
+    "name": "Dogecoin",
+    "abbreviation": "DOGE"
+  },
+  {
+    "id": 9,
+    "name": "Avalanche",
+    "abbreviation": "AVAX"
+  },
+  {
+    "id": 10,
+    "name": "tether",
+    "abbreviation": "usdt"
+  },
+  {
+    "id": 11,
+    "name": "usd-coin",
+    "abbreviation": "usdc"
+  },
+  {
+    "id": 12,
+    "name": "shiba-inu",
+    "abbreviation": "shib"
+  },
+  {
+    "id": 14,
+    "name": "uniswap",
+    "abbreviation": "uni"
+  },
+  {
+    "id": 15,
+    "name": "filecoin",
+    "abbreviation": "fil"
+  },
+  {
+    "id": 0,
+    "name": "fusion",
+    "abbreviation": "fsn"
+  }
+]
