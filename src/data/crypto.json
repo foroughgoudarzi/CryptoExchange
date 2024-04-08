@@ -70,8 +70,13 @@
     "abbreviation": "fil"
   },
   {
-    "id": 0,
+    "id": 16,
     "name": "fusion",
     "abbreviation": "fsn"
+  },
+  {
+    "id": 17,
+    "name": "paxos-standard",
+    "abbreviation": "usdp"
   }
 ]

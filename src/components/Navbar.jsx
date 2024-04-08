@@ -161,9 +161,9 @@ export default function Navbar() {
             >
               <MenuIcon />
             </IconButton>
-            <Box component="img" sx={{ height: 60 }} alt="Logo" src={logo} />
+            <Box component="img" sx={{ height: 40 }} alt="Logo" src={logo} className="me-2"/>
             <Typography variant="h4" noWrap component="div">
-              Crypto-Mock
+              CryptoExchange
             </Typography>
           </Toolbar>
         </AppBar>

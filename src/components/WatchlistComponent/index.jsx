@@ -58,14 +58,14 @@ function WatchList() {
   return (
     <>
       {/* Header */}
-      <div className="container-fluid d-flex flex-row w-75 pb-0 m-3 mb-0 align-items-center">
+      <div className="container-fluid d-flex flex-row w-100 pb-0 mt-4 ms-5 ps-5 align-items-center">
         <div className="col-3">
-          <p className="mb-0 fs-5 ">Market</p>
+          <p className="mb-0 fs-5">Market</p>
         </div>
 
         <div className="col-5 fs-5">
           <p className="mb-0 ms-5">
-            Price<span className="ms-4">Change 1D</span>
+            Price<span className="ms-5 ps-4">Change 1D</span>
           </p>
         </div>
 
@@ -121,7 +121,7 @@ function WatchList() {
           </Modal>
         </div>
       </div>
-      <RenderItems selected={selected} handleRemove={handleRemove} />
+      <RenderItems selected={selected} handleRemove={handleRemove}/>
     </>
   );
 }
