@@ -1,4 +1,4 @@
-# Crypto-Mock
+# CryptoExchange
 
 ## Description
 
@@ -30,7 +30,7 @@ Below figure shows a screenshot from the running application.
 
 <figure>
 <img src="./src/assets/cryptomock-app.png" width="500">
-<figcaption><em>Figure.1. Crypto-Mock application</em></figcaption>
+<figcaption><em>Figure.1. CryptoExchange application</em></figcaption>
 </figure>
 
 ## Installation
