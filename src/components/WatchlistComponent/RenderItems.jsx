@@ -19,7 +19,15 @@ function RenderItems(props) {
             size="40px"
             key={findId(element)}
             handleRemove={props.handleRemove}
-            // handleBuy={handleBuy}
+            handleShowBuy={props.handleShowBuy}
+            handleCloseBuy={props.handleCloseBuy}
+            fund={props.fund}
+            show={props.show}
+            numberToBuy={props.numberToBuy}
+            itemToBuy={props.itemToBuy}
+            handleChangeBuy={props.handleChangeBuy}
+            handleBuy={props.handleBuy}
+
           />
         ))}
       </h4>

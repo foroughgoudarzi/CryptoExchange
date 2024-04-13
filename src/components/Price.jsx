@@ -1,9 +1,8 @@
 import FetchPriceData from "./FetchPriceData";
 
 function Price(props) {
-  
 
-  // Implements useSWR
+  // Fetches data
   const { data, error, isLoading } = FetchPriceData(props.abr);
 
   return (

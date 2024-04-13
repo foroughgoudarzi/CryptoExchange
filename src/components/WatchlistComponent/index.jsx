@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import crypto from "../../data/crypto.json";
 import Logo from "../Logo";
 import RenderItems from "./RenderItems";
+import FetchPriceData from "../FetchPriceData";
 
 function WatchList() {
   const cryptoList =
@@ -31,17 +32,17 @@ function WatchList() {
     localStorage.setItem("cryptoList", JSON.stringify(dummyForm));
   }, [dummyForm]);
 
-  const [show, setShow] = useState(false);
+  const [showL, setShowL] = useState(false);
   const handleClose = () => {
-    setShow(false);
+    setShowL(false);
     setForm(dummyForm);
   };
   const handleShow = () => {
-    setShow(true);
+    setShowL(true);
   };
 
   const handleCloseAndSave = () => {
-    setShow(false);
+    setShowL(false);
     setDummyForm(form);
   };
 
@@ -54,6 +55,65 @@ function WatchList() {
     setDummyForm({ ...dummyForm, [event.target.name]: false });
     setForm({ ...form, [event.target.name]: false });
   };
+
+  // For Portfolio
+  const initialFund =
+    localStorage.getItem("fund") != null &&
+    localStorage.getItem("fund") != "undefined"
+      ? JSON.parse(localStorage.getItem("fund"))
+      : 12000;
+
+  const initialPortfolio =
+    localStorage.getItem("portfolio") != null &&
+    localStorage.getItem("portfolio") != "undefined"
+      ? JSON.parse(localStorage.getItem("portfolio"))
+      : {};
+
+  const [portfolio, setPortfolio] = useState(initialPortfolio);
+
+  const [show, setShow] = useState(false);
+  const [numberToBuy, setNumberToBuy] = useState();
+  const [itemToBuy, setItemToBuy] = useState();
+  const [fund, setFund] = useState(initialFund);
+
+  const handleCloseBuy = () => {
+    setNumberToBuy();
+    setShow(false);
+  };
+
+  const handleShowBuy = (event) => {
+    setItemToBuy(event.target.name);
+    setShow(true);
+  };
+
+  const handleChangeBuy = (event) => {
+    setNumberToBuy(event.target.value);
+  };
+
+  const { data, error, isLoading } = FetchPriceData(itemToBuy);
+  const handleBuy = () => {
+    
+    const price = parseFloat(
+      data.DISPLAY[itemToBuy].GBP.PRICE.replace(/[^0-9.]/g, "")
+    );
+    console.log("price", price);
+    if (numberToBuy <= 0) {
+      alert("Invalid amount!");
+    } else if (price * numberToBuy > fund) {
+      alert("Fund is not enough!");
+    } else {
+      setFund(fund - price * numberToBuy);
+      setPortfolio({ ...portfolio, [itemToBuy]: numberToBuy });
+      setShow(false);
+    }
+  };
+
+  useEffect(() => {
+    localStorage.setItem("fund", JSON.stringify(fund));
+    localStorage.setItem("portfolio", JSON.stringify(portfolio));
+  }, [portfolio, fund]);
+
+  // End for portfolio
 
   return (
     <>
@@ -81,7 +141,7 @@ function WatchList() {
           </Button>
 
           {/* Modal */}
-          <Modal show={show} onHide={handleClose} animation={false}>
+          <Modal show={showL} onHide={handleClose} animation={false}>
             <Modal.Header closeButton>
               <Modal.Title>CryptoCurrency</Modal.Title>
             </Modal.Header>
@@ -121,7 +181,8 @@ function WatchList() {
           </Modal>
         </div>
       </div>
-      <RenderItems selected={selected} handleRemove={handleRemove}/>
+      <RenderItems selected={selected} handleRemove={handleRemove} handleShowBuy={handleShowBuy} handleCloseBuy={handleCloseBuy}
+            numberToBuy={numberToBuy} fund={fund} show={show} itemToBuy={itemToBuy} handleChangeBuy={handleChangeBuy} handleBuy={handleBuy} />
     </>
   );
 }

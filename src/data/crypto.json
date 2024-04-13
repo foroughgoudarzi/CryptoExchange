@@ -46,37 +46,37 @@
   },
   {
     "id": 10,
-    "name": "tether",
-    "abbreviation": "usdt"
+    "name": "Tether",
+    "abbreviation": "USDT"
   },
   {
     "id": 11,
-    "name": "usd-coin",
-    "abbreviation": "usdc"
+    "name": "Usd-coin",
+    "abbreviation": "USDC"
   },
   {
     "id": 12,
-    "name": "shiba-inu",
-    "abbreviation": "shib"
+    "name": "Shiba-inu",
+    "abbreviation": "SHIB"
   },
   {
     "id": 14,
-    "name": "uniswap",
-    "abbreviation": "uni"
+    "name": "Uniswap",
+    "abbreviation": "UNI"
   },
   {
     "id": 15,
-    "name": "filecoin",
-    "abbreviation": "fil"
+    "name": "Filecoin",
+    "abbreviation": "FIL"
   },
   {
     "id": 16,
-    "name": "fusion",
-    "abbreviation": "fsn"
+    "name": "Fusion",
+    "abbreviation": "FSN"
   },
   {
     "id": 17,
-    "name": "paxos-standard",
-    "abbreviation": "usdp"
+    "name": "Paxos-standard",
+    "abbreviation": "USDP"
   }
 ]

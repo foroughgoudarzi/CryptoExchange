@@ -3,62 +3,65 @@ import Price from "./Price";
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import FetchPriceData from "./FetchPriceData";
-import { Pause } from "@mui/icons-material";
+import Form from "react-bootstrap/Form";
 
 function CryptoItem(props) {
+  // const initialFund =
+  //   localStorage.getItem("fund") != null &&
+  //   localStorage.getItem("fund") != "undefined"
+  //     ? JSON.parse(localStorage.getItem("fund"))
+  //     : 0;
 
-  const initialFund =
-    localStorage.getItem("fund") != null &&
-    localStorage.getItem("fund") != "undefined"
-      ? JSON.parse(localStorage.getItem("fund"))
-      : 0;
+  // const initialPortfolio =
+  //   localStorage.getItem("portfolio") != null &&
+  //   localStorage.getItem("portfolio") != "undefined"
+  //     ? JSON.parse(localStorage.getItem("portfolio"))
+  //     : {};
 
-      const purchasedCoins =
-      localStorage.getItem("purchasedCoins") != null &&
-      localStorage.getItem("purchasedCoins") != "undefined"
-        ? JSON.parse(localStorage.getItem("purchasedCoins"))
-        : [{}];
-  
-    const [portfolio, setPortfolio] = useState(purchasedCoins);
-  
-   
+  // const [portfolio, setPortfolio] = useState(initialPortfolio);
 
-  const [itemToBuy, setItemToBuy] = useState();
-  const [show, setShow] = useState(false);
-  const [numberToBuy, setNumberToBuy] = useState();
-  const [fund, setFund] = useState(initialFund);
+  // const [show, setShow] = useState(false);
+  // const [numberToBuy, setNumberToBuy] = useState();
+  // const [fund, setFund] = useState(initialFund);
 
-  const handleClose = () => setShow(false);
-  
-  const handleShow = (event) => {
-    setItemToBuy(event.target.name);
-    setShow(true);
-  };
+  // const handleClose = () => {
+  //   setNumberToBuy();
+  //   setShow(false);
+  // };
 
-  const handleChange = (event) => {
-    setNumberToBuy(event.target.value);
-    
-  }
+  // const handleShow = () => {
+  //   setShow(true);
+  // };
 
-  const handleBuy = () =>{
-    const { data, error, isLoading } = FetchPriceData(props.abr);
-    while(error || isLoading){
-    Pause(1000);
-    }
-    const price = data.DISPLAY[props.abr].GBP.PRICE;
-    if(price*numberToBuy>fund){
-      alert("Fund is not enough!");
-    } else{
-      setFund(fund-price*numberToBuy);
-      // props.handleBuy();
-      setPortfolio({ ...portfolio, [itemToBuy]: true });
-    }
-  }
+  // const handleChange = (event) => {
+  //   setNumberToBuy(event.target.value);
+  // };
 
-  useEffect(()=>{
-    
-  })
+  // const { data, error, isLoading } = FetchPriceData(props.abr);
+  // const handleBuy = () => {
+  //   console.log(props.abr);
+
+  //   console.log(props.abr, data, isLoading, error);
+
+  //   const price = parseFloat(
+  //     data.DISPLAY[props.abr].GBP.PRICE.replace(/[^0-9.]/g, "")
+  //   );
+  //   console.log("price", price);
+  //   if (numberToBuy <= 0) {
+  //     alert("Invalid amount!");
+  //   } else if (price * numberToBuy > fund) {
+  //     alert("Fund is not enough!");
+  //   } else {
+  //     setFund(fund - price * numberToBuy);
+  //     setPortfolio({ ...portfolio, [props.abr]: numberToBuy });
+  //     setShow(false);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   localStorage.setItem("fund", JSON.stringify(fund));
+  //   localStorage.setItem("portfolio", JSON.stringify(portfolio));
+  // }, [portfolio, fund]);
 
   return (
     <>
@@ -74,33 +77,38 @@ function CryptoItem(props) {
         <div className="col-2">
           <Button
             variant="primary"
-            name={props.abr}
-            onClick={handleShow}
+            name={props.abr.toUpperCase()}
+            onClick={props.handleShowBuy}
             className="btn btn-dark w-75 p-0 pt-2 pb-2"
+            itemToBuy={props.itemToBuy}
           >
             Buy
           </Button>
 
-          <Modal show={show} onHide={handleClose}>
+          <Modal
+            show={props.show}
+            onHide={props.handleCloseBuy}
+            style={{
+              background: "rgb(253, 253, 253, 0.1)",
+            }}
+          >
             <Modal.Header closeButton>
-              <Modal.Title>Buying {itemToBuy}</Modal.Title>
+              <Modal.Title>Buying {props.itemToBuy}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <input
-                className="form-control form-control-lg"
-                type="number"
-                placeholder="Please enter the number of coins to buy"
-                value={numberToBuy}
-                onChange={handleChange}
-              ></input>
+            <Form.Control size="lg" type="number" placeholder="Please enter the number of coins to buy" 
+                value={props.numberToBuy}
+                onChange={props.handleChangeBuy}
+                />
             </Modal.Body>
-            <div className="d-flex justify-content-center">Available fund: £{fund}</div>
+            <div className="d-flex justify-content-center">
+              Available fund: £{props.fund}
+            </div>
             <Modal.Footer>
-              
-              <Button variant="secondary" onClick={handleClose}>
+              <Button variant="secondary" onClick={props.handleCloseBuy}>
                 Close
               </Button>
-              <Button variant="primary" onClick={handleBuy}>
+              <Button variant="primary" onClick={props.handleBuy}>
                 Confirm
               </Button>
             </Modal.Footer>

@@ -1,4 +1,3 @@
-import React from "react";
 import "./style.css";
 import crypto from "../../data/crypto.json";
 import CardItem from "./CardItem";
