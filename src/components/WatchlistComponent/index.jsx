@@ -77,8 +77,8 @@ function WatchList() {
   const [fund, setFund] = useState(initialFund);
 
   const handleCloseBuy = () => {
-    setNumberToBuy();
     setShow(false);
+    setNumberToBuy();
   };
 
   const handleShowBuy = (event) => {
@@ -103,8 +103,12 @@ function WatchList() {
       alert("Fund is not enough!");
     } else {
       setFund(fund - price * numberToBuy);
-      setPortfolio({ ...portfolio, [itemToBuy]: numberToBuy });
+      let total = portfolio[itemToBuy] !=null? parseInt(portfolio[itemToBuy])+parseInt(numberToBuy) : numberToBuy;
+      console.log("total", total)
+      // total =
+      setPortfolio({ ...portfolio, [itemToBuy]: total });
       setShow(false);
+      setNumberToBuy();
     }
   };
 
@@ -118,7 +122,8 @@ function WatchList() {
   return (
     <>
       {/* Header */}
-      <div className="container-fluid d-flex flex-row w-100 pb-0 mt-4 ms-5 ps-5 align-items-center">
+      <div className="container-fluid d-flex flex-row w-100 watchlistheader border rounded p-3 pb-0 mt-4 align-items-center">
+      {/* container-fluid d-flex flex-row w-100 portfolioheader p-3 pb-0 mt-4 align-items-center */}
         <div className="col-3">
           <p className="mb-0 fs-5">Market</p>
         </div>
@@ -133,11 +138,11 @@ function WatchList() {
 
         <div className="col-2">
           <Button
-            className="btn btn-dark pt-2 pb-2"
+            className="btn btn-light pt-2 pb-2"
             type="button"
             onClick={handleShow}
           >
-            +/-
+            Add/Remove
           </Button>
 
           {/* Modal */}

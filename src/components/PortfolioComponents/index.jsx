@@ -6,7 +6,6 @@ import crypto from "../../data/crypto.json";
 import FetchPriceData from "../FetchPriceData";
 import { Pause } from "@mui/icons-material";
 
-
 function Basket() {
   const initialPortfolio =
     localStorage.getItem("portfolio") != null &&
@@ -34,12 +33,13 @@ function Basket() {
 
   const handleSell = (event) => {
     setItemToSell(event.target.name);
-    
+
     setShow(true);
   };
 
   const handleClose = () => {
     setShow(false);
+    setNumberToSell(0);
   };
 
   const handleChange = (event) => {
@@ -48,40 +48,26 @@ function Basket() {
 
   const { data, error, isLoading } = FetchPriceData(itemToSell);
   const handleConfirm = () => {
-    
     const price = parseFloat(
       data.DISPLAY[itemToSell].GBP.PRICE.replace(/[^0-9.]/g, "")
     );
     console.log("price", price);
     if (numberToSell <= 0 || numberToSell > parseInt(portfolio[itemToSell])) {
       alert("Invalid amount!");
-      console.log("numberToSell", numberToSell)
-      console.log("itemToSell", itemToSell)
-      console.log("available",portfolio[itemToSell])
     } else {
       setFund(fund + price * numberToSell);
       const num = parseInt(portfolio[itemToSell]) - numberToSell;
-      console.log("num", num)
       setPortfolio({ ...portfolio, [itemToSell]: num });
-      // setPortfolio({ ...portfolio, [itemToSell]: num });
 
-      console.log("portfolio", portfolio)
-       
-        if (num == 0) {
-          console.log("num===0")
-          //remove from portfolio
-         // delete portfolio[`${itemToSell}`];
-         const newObj={};
-         for(const key in portfolio){
-          if(key != itemToSell )
-          newObj[key] = portfolio[key];
-          console.log("newObj",newObj)
-          
-          setPortfolio({...newObj});
-          console.log("portfolio",portfolio)
-          }
+      if (num == 0) {
+        console.log("num===0");
+        const newObj = {};
+        for (const key in portfolio) {
+          if (key != itemToSell) newObj[key] = portfolio[key];
+          setPortfolio({ ...newObj });
         }
-   
+      }
+
       setShow(false);
     }
   };
@@ -94,7 +80,7 @@ function Basket() {
   return (
     <>
       {/* Header */}
-      <div className="container-fluid d-flex flex-row w-100 pb-0 mt-4 ms-5 ps-5 align-items-center">
+      <div className="container-fluid d-flex flex-row w-100 portfolioheader border rounded-3 p-3 pb-0 mt-4 align-items-center">
         <div className="col-3">
           <p className="mb-0 fs-5 ms-0">Market</p>
         </div>
