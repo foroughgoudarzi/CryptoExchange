@@ -61,7 +61,7 @@ function WatchList() {
     localStorage.getItem("fund") != null &&
     localStorage.getItem("fund") != "undefined"
       ? JSON.parse(localStorage.getItem("fund"))
-      : 12000;
+      : 0;
 
   const initialPortfolio =
     localStorage.getItem("portfolio") != null &&
@@ -97,7 +97,7 @@ function WatchList() {
       data.DISPLAY[itemToBuy].GBP.PRICE.replace(/[^0-9.]/g, "")
     );
     console.log("price", price);
-    if (numberToBuy <= 0) {
+    if (isNaN(numberToBuy) || numberToBuy <= 0) {
       alert("Invalid amount!");
     } else if (price * numberToBuy > fund) {
       alert("Fund is not enough!");
@@ -122,8 +122,7 @@ function WatchList() {
   return (
     <>
       {/* Header */}
-      <div className="container-fluid d-flex flex-row w-100 watchlistheader border rounded p-3 pb-0 mt-4 align-items-center">
-      {/* container-fluid d-flex flex-row w-100 portfolioheader p-3 pb-0 mt-4 align-items-center */}
+      <div className="container-fluid d-flex flex-row w-100 watchlistheader border rounded p-3 pb-0 align-items-center">
         <div className="col-3">
           <p className="mb-0 fs-5">Market</p>
         </div>

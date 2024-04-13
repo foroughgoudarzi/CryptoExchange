@@ -102,7 +102,7 @@ function CryptoItem(props) {
                 />
             </Modal.Body>
             <div className="d-flex justify-content-center">
-              Available fund: £{props.fund}
+              Available fund: £{props.fund.toFixed(5)}
             </div>
             <Modal.Footer>
               <Button variant="secondary" onClick={props.handleCloseBuy}>

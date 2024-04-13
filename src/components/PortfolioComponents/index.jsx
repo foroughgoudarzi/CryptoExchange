@@ -51,8 +51,7 @@ function Basket() {
     const price = parseFloat(
       data.DISPLAY[itemToSell].GBP.PRICE.replace(/[^0-9.]/g, "")
     );
-    console.log("price", price);
-    if (numberToSell <= 0 || numberToSell > parseInt(portfolio[itemToSell])) {
+    if ( isNaN(numberToSell) || numberToSell <= 0 || numberToSell > parseInt(portfolio[itemToSell])) {
       alert("Invalid amount!");
     } else {
       setFund(fund + price * numberToSell);
@@ -80,7 +79,7 @@ function Basket() {
   return (
     <>
       {/* Header */}
-      <div className="container-fluid d-flex flex-row w-100 portfolioheader border rounded-3 p-3 pb-0 mt-4 align-items-center">
+      <div className="container-fluid d-flex flex-row w-100 portfolioheader border rounded-3 p-3 pb-0 align-items-center">
         <div className="col-3">
           <p className="mb-0 fs-5 ms-0">Market</p>
         </div>

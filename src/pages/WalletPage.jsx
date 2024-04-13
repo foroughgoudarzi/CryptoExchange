@@ -53,17 +53,12 @@ const WalletPage = (props) => {
   return (
     <Container maxWidth="sm">
       <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
+      <Box gridColumn="span 12" >
+          <Item className='fs-4 bg-black text-light'>{dateBuilder()}</Item>
+        </Box>
         <Box gridColumn="span 12">
-          <Item>
+          <Item  className="bg-light">
             <TotalInvested />
-          </Item>
-        </Box>
-        <Box gridColumn="span 12">
-          <Item>{dateBuilder()}</Item>
-        </Box>
-        <Box gridColumn="span 12">
-          <Item>
-            <Funds />
           </Item>
         </Box>
       </Box>
