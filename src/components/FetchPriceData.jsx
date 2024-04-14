@@ -23,8 +23,8 @@ function FetchPriceData(abr) {
   return {
     data: data,
     isLoading: isLoading,
-    error: error
-  }
+    error: error,
+  };
 }
 
 export default FetchPriceData;

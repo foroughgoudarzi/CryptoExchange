@@ -4,7 +4,7 @@ import CardItem from "./CardItem";
 
 function Card() {
   return (
-    <div className="d-flex flex-row flex-wrap mt-5 align-middle">
+    <div className="d-flex flex-row flex-wrap home align-middle">
       {crypto.map((element) => (
         <div className="card" key={element.id}>
           <CardItem

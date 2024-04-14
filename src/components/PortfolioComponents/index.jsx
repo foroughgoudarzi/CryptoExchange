@@ -51,7 +51,11 @@ function Basket() {
     const price = parseFloat(
       data.DISPLAY[itemToSell].GBP.PRICE.replace(/[^0-9.]/g, "")
     );
-    if ( isNaN(numberToSell) || numberToSell <= 0 || numberToSell > parseInt(portfolio[itemToSell])) {
+    if (
+      isNaN(numberToSell) ||
+      numberToSell <= 0 ||
+      numberToSell > parseInt(portfolio[itemToSell])
+    ) {
       alert("Invalid amount!");
     } else {
       setFund(fund + price * numberToSell);

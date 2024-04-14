@@ -8,7 +8,6 @@ import { Typography } from "@mui/material";
 import TotalInvested from "../components/TotalInvested";
 import Funds from "../components/Funds";
 import History from "../components/History";
-// import "./wallet.css";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -51,14 +50,15 @@ const WalletPage = (props) => {
 
     return `${day} ${date} ${month} ${year}`;
   };
+
   return (
     <Container maxWidth="sm" className="container wallet">
       <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
-      <Box gridColumn="span 12" >
-          <Item className='fs-4 bg-black text-light'>{dateBuilder()}</Item>
+        <Box gridColumn="span 12">
+          <Item className="fs-4 bg-black text-light">{dateBuilder()}</Item>
         </Box>
         <Box gridColumn="span 12">
-          <Item  className="bg-light">
+          <Item className="bg-light">
             <TotalInvested />
           </Item>
         </Box>

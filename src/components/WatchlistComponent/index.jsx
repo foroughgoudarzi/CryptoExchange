@@ -92,7 +92,6 @@ function WatchList() {
 
   const { data, error, isLoading } = FetchPriceData(itemToBuy);
   const handleBuy = () => {
-    
     const price = parseFloat(
       data.DISPLAY[itemToBuy].GBP.PRICE.replace(/[^0-9.]/g, "")
     );
@@ -103,8 +102,11 @@ function WatchList() {
       alert("Fund is not enough!");
     } else {
       setFund(fund - price * numberToBuy);
-      let total = portfolio[itemToBuy] !=null? parseInt(portfolio[itemToBuy])+parseInt(numberToBuy) : numberToBuy;
-      console.log("total", total)
+      let total =
+        portfolio[itemToBuy] != null
+          ? parseInt(portfolio[itemToBuy]) + parseInt(numberToBuy)
+          : numberToBuy;
+      console.log("total", total);
       // total =
       setPortfolio({ ...portfolio, [itemToBuy]: total });
       setShow(false);
@@ -185,8 +187,18 @@ function WatchList() {
           </Modal>
         </div>
       </div>
-      <RenderItems selected={selected} handleRemove={handleRemove} handleShowBuy={handleShowBuy} handleCloseBuy={handleCloseBuy}
-            numberToBuy={numberToBuy} fund={fund} show={show} itemToBuy={itemToBuy} handleChangeBuy={handleChangeBuy} handleBuy={handleBuy} />
+      <RenderItems
+        selected={selected}
+        handleRemove={handleRemove}
+        handleShowBuy={handleShowBuy}
+        handleCloseBuy={handleCloseBuy}
+        numberToBuy={numberToBuy}
+        fund={fund}
+        show={show}
+        itemToBuy={itemToBuy}
+        handleChangeBuy={handleChangeBuy}
+        handleBuy={handleBuy}
+      />
     </>
   );
 }

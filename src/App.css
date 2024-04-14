@@ -1,51 +1,52 @@
 #root {
   width: 100%;
   margin: 0 auto;
- text-align: center;
+  text-align: center;
 }
 
-.Wallpaper { 
+.Wallpaper {
   background-size: "cover";
-  height: 150vh; 
+  height: 150vh;
   margin-top: -70px;
   font-size: 50px;
   background-repeat: no-repeat;
-  padding:0px;
+  padding: 0px;
 }
-.p-3{
-  padding:2rem !important; 
+.p-3 {
+  padding: 2rem !important;
 }
 
 .watchlist {
   height: 120px;
   margin: 1rem 24rem 2rem 4rem;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border: 6px solid white;
 }
 
 .portfolio {
   height: 120px;
   margin: 1rem 34rem 2rem 4rem;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border: 6px solid white;
 }
 
-.portfolioheader, .watchlistheader {
+.portfolioheader,
+.watchlistheader {
   height: 30px;
   margin: 1rem 34rem 0.7rem 4rem;
   background-color: black;
   color: white;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border: 6px solid black;
   margin-top: 5rem;
 }
 
-.css-2ulfj5-MuiTypography-root{
-  margin-right:120px !important;
+.css-2ulfj5-MuiTypography-root {
+  margin-right: 120px !important;
 }
 
-.modal-header{
-  margin-top:30px;
+.modal-header {
+  margin-top: 30px;
 }
 
 .modal-style {
@@ -53,7 +54,5 @@
 }
 
 .wallet {
-   
-  margin-top: 20%;  
-  
+  margin-top: 20%;
 }
